@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "904728524309",
+    "project_id": "minhas-tarefas-dd0c5",
+    "storage_bucket": "minhas-tarefas-dd0c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904728524309:android:53036d5a9741435891401c",
+        "android_client_info": {
+          "package_name": "com.example.layout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW12rKXILeKfviNlphsi7UqsyC3yVv5KA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
