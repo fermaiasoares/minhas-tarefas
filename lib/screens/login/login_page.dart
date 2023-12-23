@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         Messages.showMessage(
           scaffoldMessager,
           MessageType.warning,
-          'A senha fornecida é muito fraca',
+          'Não foi possível acessar sua conta',
         );
       } on Exception catch (e, s) {
         log('Firebase:logar', error: e, stackTrace: s);
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
         Messages.showMessage(
           scaffoldMessager,
           MessageType.warning,
-          'A senha fornecida é muito fraca',
+          'Não foi possível acessar sua conta',
         );
       }
     }
