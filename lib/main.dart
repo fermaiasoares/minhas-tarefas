@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:layout/screens/minhas_tarefas/minhas_tarefas_page.dart';
+import 'package:layout/screens/splash/splash_page.dart';
 import 'firebase_options.dart';
 
 import 'package:layout/screens/login/login_page.dart';
@@ -24,7 +25,7 @@ class Main extends StatelessWidget {
       title: 'Minhas Tarefas APP',
       initialRoute: '/',
       routes: {
-        '/': (_) => const LoginPage(),
+        '/': (_) => const SplashPage(),
         '/login': (_) => const LoginPage(),
         '/cadastrar-login': (_) => const SingupPage(),
         '/minhas-tarefas': (_) => const MinhasTarefasPage(),
