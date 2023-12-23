@@ -1,9 +1,10 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:layout/core/constants/shared_preferences_key.dart';
 import 'package:layout/core/messages/messages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:validatorless/validatorless.dart';
 
 class SingupPage extends StatefulWidget {
@@ -32,6 +33,7 @@ class _SingupPageState extends State<SingupPage> {
   @override
   Widget build(BuildContext context) {
     final scaffoldMessager = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
 
     Future<void> cadastrarUsuario({
       required String email,
@@ -44,14 +46,38 @@ class _SingupPageState extends State<SingupPage> {
           password: password,
         );
 
-        if (kDebugMode) {
-          print(credential);
-        }
+        final sharedPreferences = await SharedPreferences.getInstance();
+
+        await sharedPreferences.clear();
+
+        final UserCredential(
+          :user,
+        ) = credential;
+
+        // TODO: voltar e melhorar o cadastro das chaves
+
+        /// Chave do e-mail
+        await sharedPreferences.setString(
+          SharedPreferencesKey.email,
+          user!.email!,
+        );
+
+        /// Chave do uid
+        await sharedPreferences.setString(
+          SharedPreferencesKey.uid,
+          user.uid,
+        );
 
         Messages.showMessage(
           scaffoldMessager,
           MessageType.success,
           'Conta registrada com sucesso',
+        );
+
+        // Navego para tela de tarefas e removo todas as outras da pilha
+        navigator.pushNamedAndRemoveUntil(
+          '/minhas-tarefas',
+          (route) => false,
         );
       } on FirebaseAuthException catch (e, s) {
         log('Firebase:cadastrarUsuario', error: e, stackTrace: s);
